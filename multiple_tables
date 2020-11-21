@@ -82,3 +82,10 @@ FROM subscriptions
 LEFT JOIN orders
 WHERE subscriptions.description = 'Sports Magazine'; 
 
+-- CROSS JOIN statement 
+
+SELECT * 
+FROM orders 
+CROSS JOIN customers 
+CROSS JOIN subscriptions 
+LIMIT 10; 
