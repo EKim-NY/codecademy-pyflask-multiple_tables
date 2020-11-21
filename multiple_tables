@@ -48,3 +48,18 @@ FROM previous_query
 JOIN customers 
   ON customers.customer_id = 
      previous_query.customer_id; 
+
+-- Multiple JOIN statement 
+
+SELECT orders.customer_id, 
+    customers.customer_name,    
+    subscriptions.description,              
+    subscriptions.price_per_month
+FROM orders
+JOIN subscriptions 
+ON subscriptions.subscription_id = 
+   orders.subscription_id 
+JOIN customers 
+ON customers.customer_id = orders.customer_id
+LIMIT 5; 
+
