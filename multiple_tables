@@ -71,3 +71,8 @@ LEFT JOIN subscriptions
 WHERE subscriptions.description IS NOT NULL
 LIMIT 5;
 
+SELECT * 
+FROM customers 
+LEFT JOIN orders
+WHERE subscription_id IS NOT NULL 
+GROUP BY customers.customer_name; 
