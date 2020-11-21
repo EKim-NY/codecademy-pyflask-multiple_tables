@@ -1,3 +1,5 @@
+-- Cross Join Exercise 
+
 SELECT COUNT(*) 
 FROM newspaper
 WHERE start_month <=3 
@@ -21,3 +23,11 @@ CROSS JOIN months
 WHERE start_month <= month 
   AND end_month >= month 
 GROUP BY month; 
+
+-- Union exercise 
+
+SELECT * 
+FROM newspaper 
+UNION 
+SELECT * 
+FROM online; 
