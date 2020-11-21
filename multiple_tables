@@ -63,3 +63,11 @@ JOIN customers
 ON customers.customer_id = orders.customer_id
 LIMIT 5; 
 
+-- LEFT JOIN statement 
+
+SELECT * 
+FROM customers 
+LEFT JOIN subscriptions 
+WHERE subscriptions.description IS NOT NULL
+LIMIT 5;
+
