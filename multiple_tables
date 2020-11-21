@@ -76,3 +76,9 @@ FROM customers
 LEFT JOIN orders
 WHERE subscription_id IS NOT NULL 
 GROUP BY customers.customer_name; 
+
+SELECT COUNT(*) 
+FROM subscriptions 
+LEFT JOIN orders
+WHERE subscriptions.description = 'Sports Magazine'; 
+
