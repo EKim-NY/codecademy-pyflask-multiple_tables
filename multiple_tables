@@ -89,3 +89,19 @@ FROM orders
 CROSS JOIN customers 
 CROSS JOIN subscriptions 
 LIMIT 10; 
+
+-- WITH statement
+
+WITH subquery_results AS (
+  SELECT * 
+  FROM orders 
+  JOIN customers 
+  ON orders.customer_id = 
+     customers.customer_id 
+)
+SELECT customers.customer_name, 
+  orders.subscription_id, 
+  orders.purchase_date 
+FROM subquery_results 
+ 
+
