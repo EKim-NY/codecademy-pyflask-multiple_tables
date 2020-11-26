@@ -91,17 +91,26 @@ CROSS JOIN subscriptions
 LIMIT 10; 
 
 -- WITH statement
+-- Notes: 
+--  Columns from the subquery table should be described as such in the SELECT clause after WITH 
+-- because columns from ORDERS and CUSTOMERS tables will not be recognized. 
+-- Why does using COUNT(subquery.order_id) return 180 in new result_set?  
 
-WITH subquery_results AS (
-  SELECT * 
-  FROM orders 
-  JOIN customers 
-  ON orders.customer_id = 
-     customers.customer_id 
-)
-SELECT customers.customer_name, 
-  orders.subscription_id, 
-  orders.purchase_date 
-FROM subquery_results 
+  WITH subquery AS (
+      SELECT * 
+      FROM customers 
+      CROSS JOIN orders 
+  )
+  SELECT subquery.customer_name, 
+    subquery.subscription_id, 
+    subquery.purchase_date, 
+    subscriptions.description
+  FROM subquery 
+  CROSS JOIN subscriptions
+  GROUP BY subquery.customer_name; 
+    
+
+
+  
  
 
